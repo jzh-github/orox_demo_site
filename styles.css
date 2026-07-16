@@ -53,7 +53,8 @@ button { color: inherit; }
   top: 0;
   left: 0;
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: 1fr auto auto auto;
+  column-gap: 18px;
   align-items: center;
   width: 100%;
   height: var(--header-height);
@@ -68,9 +69,13 @@ button { color: inherit; }
   border-color: var(--line);
   backdrop-filter: blur(18px);
 }
-.brand { justify-self: start; width: 116px; overflow: hidden; border-radius: 4px; }
-.brand img, .footer-brand img { aspect-ratio: 405 / 104; object-fit: cover; }
-.site-nav { display: flex; gap: 34px; font-size: 14px; }
+.brand { position: relative; justify-self: start; width: 116px; overflow: hidden; border-radius: 4px; }
+.brand img, .footer-brand img { aspect-ratio: 516 / 96; object-fit: contain; }
+.brand-logo { transition: opacity 0.25s ease; }
+.brand-logo-black { position: absolute; inset: 0; opacity: 0; }
+.site-header.is-scrolled .brand-logo-white { opacity: 0; }
+.site-header.is-scrolled .brand-logo-black { opacity: 1; }
+.site-nav { position: absolute; left: 50%; display: flex; gap: 34px; font-size: 14px; white-space: nowrap; transform: translateX(-50%); }
 .site-nav a { position: relative; padding: 28px 0; }
 .site-nav a::after {
   content: "";
@@ -95,10 +100,7 @@ button { color: inherit; }
 .header-cta:hover { color: #000; background: #fff; }
 .site-header.is-scrolled .header-cta:hover { color: #fff; background: #000; }
 .language-toggle {
-  position: absolute;
-  right: 36px;
-  top: 21px;
-  right: 150px;
+  justify-self: end;
   display: grid;
   place-items: center;
   width: 34px;
@@ -232,10 +234,11 @@ button { color: inherit; }
 
 @media (max-width: 980px) {
   :root { --shell: calc(100vw - 48px); }
-  .site-header { grid-template-columns: 1fr auto; height: 68px; padding: 0 24px; }
+  .site-header { grid-template-columns: 1fr auto auto; height: 68px; padding: 0 24px; column-gap: 12px; }
   .brand { width: 104px; }
   .header-cta { display: none; }
-  .language-toggle { right: 72px; bottom: auto; }
+  .menu-toggle { grid-column: 2; grid-row: 1; }
+  .language-toggle { grid-column: 3; grid-row: 1; }
   .menu-toggle { justify-self: end; display: grid; gap: 7px; width: 42px; height: 42px; padding: 12px 8px; border: 0; background: transparent; cursor: pointer; }
   .menu-toggle span:not(.sr-only) { display: block; height: 1px; background: currentColor; transition: transform .25s; }
   .menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(4px) rotate(45deg); }
