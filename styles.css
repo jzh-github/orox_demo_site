@@ -71,10 +71,8 @@ button { color: inherit; }
 }
 .brand { position: relative; justify-self: start; width: 116px; overflow: hidden; border-radius: 4px; }
 .brand img, .footer-brand img { aspect-ratio: 516 / 96; object-fit: contain; }
-.brand-logo { transition: opacity 0.25s ease; }
-.brand-logo-black { position: absolute; inset: 0; opacity: 0; }
-.site-header.is-scrolled .brand-logo-white { opacity: 0; }
-.site-header.is-scrolled .brand-logo-black { opacity: 1; }
+.brand-logo { transition: filter 0.25s ease; }
+.site-header.is-scrolled .brand-logo-white { filter: invert(1); }
 .site-nav { position: absolute; left: 50%; display: flex; gap: 34px; font-size: 14px; white-space: nowrap; transform: translateX(-50%); }
 .site-nav a { position: relative; padding: 28px 0; }
 .site-nav a::after {
