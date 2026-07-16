@@ -8,6 +8,40 @@ const nextButton = document.querySelector("[data-next]");
 const hero = document.querySelector(".hero");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+const updatedHeroImages = [
+  "assets/orox-bike-rider-snow.jpg",
+  "assets/orox-bike-road.jpg",
+  "assets/orox-bike-detail-black.jpg",
+];
+const updatedProductImages = [
+  "assets/orox-bike-studio-gray.jpg",
+  "assets/orox-bike-studio-black.jpg",
+  "assets/orox-bike-road.jpg",
+];
+const updatedDetailImages = [
+  "assets/orox-bike-road.jpg",
+  "assets/orox-bike-studio-gray.jpg",
+  "assets/orox-bike-detail-black.jpg",
+  "assets/orox-bike-studio-black.jpg",
+  "assets/orox-bike-rider-snow.jpg",
+];
+
+function applyUpdatedAssets() {
+  document.querySelectorAll(".hero-slide img").forEach((image, index) => {
+    if (updatedHeroImages[index]) image.src = updatedHeroImages[index];
+  });
+  document.querySelectorAll(".product-card img").forEach((image, index) => {
+    if (updatedProductImages[index]) image.src = updatedProductImages[index];
+  });
+  document.querySelectorAll(".detail-card img").forEach((image, index) => {
+    if (updatedDetailImages[index]) image.src = updatedDetailImages[index];
+  });
+  const visionImage = document.querySelector(".vision > img");
+  if (visionImage) visionImage.src = "assets/orox-bike-road.jpg";
+}
+
+applyUpdatedAssets();
+
 let activeSlide = 0;
 let autoplayTimer;
 let touchStartX = 0;
